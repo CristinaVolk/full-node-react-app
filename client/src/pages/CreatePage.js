@@ -16,16 +16,9 @@ export default function CreatePage() {
   const pressHandler = async (event) => {
     if (event.key === "Enter") {
       try {
-        const data = await request(
-          "http://localhost:5005/api/link/generate",
-          "POST",
-          {
-            from: link,
-          },
-          {
-            Authorization: `Bearer ${auth.token}`,
-          },
-        );
+        const data = await request("/api/link/generate", "POST", {
+          from: link,
+        });
         console.log(data);
         history.push(`/detail/${data.link._id}`);
       } catch (e) {}

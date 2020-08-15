@@ -11,12 +11,9 @@ const LinksPage = () => {
 
   const getLinks = useCallback(async () => {
     try {
-      const fetchedLinks = await request(
-        `http://localhost:5005/api/link/`,
-        "GET",
-        null,
-        { Authorization: `Bearer ${token}` },
-      );
+      const fetchedLinks = await request(`/api/link/`, "GET", null, {
+        Authorization: `Bearer ${token}`,
+      });
       setLinks(fetchedLinks);
     } catch (error) {}
   }, [request, token]);

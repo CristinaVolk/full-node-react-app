@@ -12,12 +12,7 @@ export default function DetailPage() {
   const { request, loading } = useHttp();
 
   const getLink = useCallback(async () => {
-    const fetched = await request(
-      `http://localhost:5005/api/link/${linkId}`,
-      "GET",
-      null,
-      { Authorization: `Bearer ${token}` },
-    );
+    const fetched = await request(`/api/link/${linkId}`, "GET", null);
     setLink(fetched);
   }, [request, token, linkId]);
 

@@ -27,11 +27,7 @@ export default function AuthPage() {
 
   const registerHandler = async () => {
     try {
-      const data = await request(
-        "http://localhost:5005/api/auth/register",
-        "POST",
-        { ...form },
-      );
+      const data = await request("/api/auth/register", "POST", { ...form });
       message(data.message);
     } catch (error) {
       console.error(error);
@@ -40,11 +36,7 @@ export default function AuthPage() {
 
   const loginHandler = async () => {
     try {
-      const data = await request(
-        "http://localhost:5005/api/auth/login",
-        "POST",
-        { ...form },
-      );
+      const data = await request("/api/auth/login", "POST", { ...form });
       auth.login(data.token, data.userId);
     } catch (error) {
       console.error(error);

@@ -13,7 +13,16 @@ export const useHttp = () => {
           headers["Content-Type"] = "application/json";
         }
 
-        const response = await fetch(url, { method, body, headers });
+        const token = localStorage.getItem("token");
+        if (token) {
+          headers["Authorization"] = `Bearer ${token}`;
+        }
+
+        const response = await fetch(`http://localhost:5005${url}`, {
+          method,
+          body,
+          headers,
+        });
         const data = await response.json();
 
         if (!response.ok) {
